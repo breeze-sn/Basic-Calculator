@@ -1,0 +1,128 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Roboto Slab', serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    overflow: hidden;
+}
+
+#intro {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #051650;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 2em;
+    animation: fadeOut 2s forwards 2s;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.calculator {
+    display: none;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.display {
+    background-color: #222;
+    color: #fff;
+    text-align: right;
+    padding: 25px;
+    font-size: 2em;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.button {
+    padding: 20px;
+    font-size: 1.5em;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.button.operator {
+    background-color: #051650;
+    color: #fff;
+}
+
+.button.equals {
+    grid-column: span 4;
+    background-color: #797ef6;
+    color: #fff;
+}
+
+.button:hover {
+    background-color: #e0e0e0; 
+    color: #000; 
+}
+
+.button.operator:hover {
+    background-color: #00072d; 
+    color: #fff; 
+}
+
+.button.equals:hover {
+    background-color: #5A6BF7; 
+    color: #fff; 
+}
+
+.button:active {
+    background-color: #ccc;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.button:active::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+    z-index: 0;
+}
+
+.button:active::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 1;
+}
